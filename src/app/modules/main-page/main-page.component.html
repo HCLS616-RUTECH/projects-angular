@@ -1,0 +1,26 @@
+<section class="main-page">
+  <h1 class="main-page__header">
+    <span>Angular projects</span>
+    <mat-icon>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+        <g>
+          <path d="M500,80l411.2,151.2l-85.7,504L499.8,910L174.3,734.9L88.8,231.2L500,80 M500,10L10,185l100.9,595L500,990l388.8-210L990,185L500,10L500,10z"/>
+          <path d="M692.5,710H780L500,97.5L220,710h87.5l58.2-122.5h268.7L692.5,710z M407.2,500L500,304.5L592.8,500H407.2z"/>
+        </g>
+      </svg>
+    </mat-icon>
+  </h1>
+
+  <article class="main-page__control-panel">
+    <control-panel-desktop [form]="form"></control-panel-desktop>
+  </article>
+
+  <article class="main-page__cards-container">
+    <project-card *ngFor="let card of cards$ | async | filterItems: filterKeys : filterValue | sortItems : 'name' : sortValue"
+                  [card]="card"
+                  (onNavigate)="handleNavigateToProject($event)"
+    ></project-card>
+
+    <page-loader *ngIf="isLoading"></page-loader>
+  </article>
+</section>

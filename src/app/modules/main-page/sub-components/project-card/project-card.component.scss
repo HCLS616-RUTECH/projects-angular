@@ -1,0 +1,91 @@
+@import "src/app/shared/styles/index";
+
+.card {
+  height: 400px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background: lighten($main-background, 5%);
+  font-weight: 200;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  //transition: 0.6s ease;
+  //
+  //&:hover {
+  //  transform: perspective(600px) rotateY(-180deg);
+  //}
+  //
+  //&:active {
+  //  transform: scale(0.93) perspective(600px) rotateY(-180deg);
+  //}
+
+  transition: 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+    & > div {
+      &:first-child {
+        width: 150px;
+        height: 150px;
+      }
+
+      &:last-child {
+        margin-bottom: 50px;
+      }
+    }
+
+    .icon {
+      font-size: 150px
+    }
+
+    .name {
+      font-size: 18px;
+
+    }
+  }
+
+  .additional {
+    height: 100%;
+    padding: 18px;
+
+    .description {
+      & > div {
+        &:first-child {
+          width: max-content;
+          margin-bottom: 4px;
+          font-size: 18px;
+          font-weight: 500;
+          border-bottom: 1px solid $main-color;
+        }
+      }
+
+    }
+
+    .technologies {
+      margin-top: 8px;
+      & > div {
+        &:first-child {
+          width: max-content;
+          margin-bottom: 4px;
+          font-size: 18px;
+          font-weight: 500;
+          border-bottom: 1px solid $main-color;
+        }
+      }
+    }
+  }
+}

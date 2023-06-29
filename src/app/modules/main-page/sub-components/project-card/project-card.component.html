@@ -1,0 +1,33 @@
+<div class="card"
+     (mouseenter)="handleHover(true)"
+     (mouseleave)="handleHover(false)"
+     [@visibleCard]="true"
+     (click)="handleTriggerNavigation()">
+  <div *ngIf="!isHover"
+       class="main"
+       [@visibleMain]="!isHover">
+    <div class="logo">
+      <mat-icon DynamicSvg
+                [svg]="card.img"
+                class="icon"
+      ></mat-icon>
+    </div>
+    <div class="name"><{{name}}/></div>
+  </div>
+
+  <div *ngIf="isHover"
+       class="additional"
+       [@visibleAdditional]="isHover">
+
+    <div class="description">
+      <div>Description:</div>
+      <div>{{card.description}}</div>
+    </div>
+
+    <div class="technologies">
+      <div>Technologies:</div>
+      <div *ngFor="let technology of card.technologies; let i = index">{{i + 1}}. {{technology}}</div>
+    </div>
+
+  </div>
+</div>
