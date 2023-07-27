@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ProjectsNamesEnum} from "../../shared/enums/projects-names.enum";
-import {finalize, Observable, tap} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {ProjectCard} from "./sources/models/project-card.model";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {MainPageHttpService} from "./services/main-page.http.service";
@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CacheService} from "../../shared/services/cache.service";
 import {MainPageCacheModel} from "./sources/models/main-page-cache.model";
+import {MultiPlatform} from "../../shared/decorators/milti-platform.decorator";
 
 @UntilDestroy()
 @Component({
@@ -17,6 +18,8 @@ import {MainPageCacheModel} from "./sources/models/main-page-cache.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainPageComponent implements OnInit {
+  @MultiPlatform({width: 594}) isMobile = false;
+
   cards$!: Observable<ProjectCard[]>;
   form: FormGroup;
 
@@ -40,14 +43,6 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.cards$ = this._mainPageHttpService.getProjectsCards(this._path)
-      .pipe(
-        untilDestroyed(this),
-        tap(() => this.isLoading = false)
-      );
-  }
-
   get sortValue(): 'empty' | 'ascend' | 'descend' {
     return this.form.getRawValue().sort;
   }
@@ -60,6 +55,14 @@ export class MainPageComponent implements OnInit {
     return this._filterKeys;
   }
 
+  ngOnInit(): void {
+    this.cards$ = this._mainPageHttpService.getProjectsCards(this._path)
+      .pipe(
+        untilDestroyed(this),
+        tap(() => this.isLoading = false)
+      );
+  }
+
   handleNavigateToProject(path: string): void {
     this._router.navigate([path]).then();
   }
@@ -68,8 +71,8 @@ export class MainPageComponent implements OnInit {
     const controls = Object.keys(this._cacheService.cache).length
       ? this._cacheService.cache
       : {
-          filter: '',
-          sort: 'empty',
+        filter: '',
+        sort: 'empty',
       }
 
     return fb.group(controls);

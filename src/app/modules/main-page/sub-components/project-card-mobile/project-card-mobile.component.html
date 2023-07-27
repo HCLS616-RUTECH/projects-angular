@@ -1,0 +1,31 @@
+<div (click)="handleToggleAdditionalView()" class="card">
+  <div class="main">
+    <div class="logo">
+      <mat-icon DynamicSvg
+                [svg]="card.img"
+                class="icon"
+      ></mat-icon>
+    </div>
+    <div class="name"><{{name}}/></div>
+  </div>
+
+  <div *ngIf="isOpen"
+       [@visibleAdditional]="isOpen"
+       class="additional">
+
+    <div class="description">
+      <div>Description:</div>
+      <div>{{card.description}}</div>
+    </div>
+
+    <div class="technologies">
+      <div>Technologies:</div>
+      <div *ngFor="let technology of card.technologies; let i = index">{{i + 1}}. {{technology}}</div>
+    </div>
+
+    <div (click)="handleTriggerNavigation($event)" class="button">
+      <button>OPEN</button>
+    </div>
+
+  </div>
+</div>

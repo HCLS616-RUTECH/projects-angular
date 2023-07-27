@@ -16,9 +16,10 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {SortItemsModule} from "../../shared/pipes/sort-items/sort-items.module";
 import {PageLoaderModule} from "../../shared/components/page-loader/page-loader.module";
+import { ProjectCardMobileComponent } from './sub-components/project-card-mobile/project-card-mobile.component';
 
 @NgModule({
-  declarations: [MainPageComponent, ProjectCardComponent, ControlPanelDesktopComponent, ControlPanelFilterComponent, ControlPanelSortComponent],
+  declarations: [MainPageComponent, ProjectCardComponent, ControlPanelDesktopComponent, ControlPanelFilterComponent, ControlPanelSortComponent, ProjectCardMobileComponent],
     imports: [
         CommonModule,
         MainPageRoutingModule,
