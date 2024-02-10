@@ -1,5 +1,5 @@
-<section class="main-page">
-  <h1 class="main-page__header">
+<section class="container">
+  <h1 class="header">
     <span>Angular projects</span>
     <mat-icon>
       <svg enable-background="new 0 0 1000 1000" version="1.1" viewBox="0 0 1000 1000" x="0px" xml:space="preserve"
@@ -14,11 +14,11 @@
     </mat-icon>
   </h1>
 
-  <article class="main-page__control-panel">
+  <article class="control-panel">
     <control-panel-desktop [form]="form"></control-panel-desktop>
   </article>
 
-  <article class="main-page__cards-container">
+  <article class="cards">
     <div *ngIf="!isMobile" class="desktop">
       <project-card
         (onNavigate)="handleNavigateToProject($event)"

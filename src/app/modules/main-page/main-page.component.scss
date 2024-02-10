@@ -1,6 +1,6 @@
 @import "src/app/shared/styles/index";
 
-.main-page {
+.container {
   min-height: 100%;
   height: max-content;
   min-width: 300px;
@@ -9,7 +9,7 @@
   background: $main-background;
   color: $main-color;
 
-  &__header {
+  .header {
     display: flex;
     justify-content: center;
     height: 42px;
@@ -26,12 +26,12 @@
     }
   }
 
-  &__control-panel {
+  .control-panel {
     width: 80%;
     margin: 0 auto;
   }
 
-  &__cards-container {
+  .cards {
     width: 80%;
     margin: 20px auto;
 
